@@ -17,8 +17,7 @@
 
 * **Clone the repository**:
    ```sh
-   git clone https://github.com/your-repo/serenity-bdd-framework.git
-   cd serenity-bdd-framework
+   git clone https://github.com/sametkr/dolpheen-serenity-cucumber.git
 * **Install dependencies**:
     ```sh
   mvn clean install
