@@ -55,6 +55,42 @@
     And user clicks Log in button
     Then user should see "Dashboard" on the homepage
 
+# Sample Definitions:
+    @Given("{actor} is on the home page")
+    public void user_is_on_the_login_page(Actor actor) {
+    actor.wasAbleTo(NavigateTo.orangeHrmHomePage());
+    }
+
+    @When("{actor} enters email {string}")
+    public void user_enters_email(Actor actor, String string) {
+        actor.attemptsTo(Enter.theValue(string).into(OrangeHrmHomePage.USER_USERNAME));
+    }
+
+    @When("{actor} enters password {string}")
+    public void user_enters_password(Actor actor, String string) {
+        actor.attemptsTo(Enter.theValue(string).into(OrangeHrmHomePage.USER_PASSWORD));
+    }
+
+    @When("{actor} clicks Log in button")
+    public void user_clicks_log_in_button(Actor actor) {
+        actor.wasAbleTo(Click.on(OrangeHrmHomePage.LOG_IN_BUTTON));
+    }
+
+    @Then("{actor} should see {string} on the homepage")
+    public void user_should_see_on_the_homepage(Actor actor, String string) {
+        actor.attemptsTo(Ensure.that(DashboardPage.DASHBOARD_PAGE_TITLE).hasText(string));
+    }
+
+    @Then("{actor} should see {string} message")
+    public void user_should_see_message(Actor actor, String string) {
+        actor.attemptsTo(Ensure.that(OrangeHrmHomePage.ERROR_MESSAGE).hasText(string));
+    }
+
+# Sample Web Elements:
+    public static Target USER_USERNAME = Target.the("Username").locatedBy("//input[@name='username']");
+    public static Target USER_PASSWORD = Target.the("Password").locatedBy("//input[@name='password']");
+    public static Target LOG_IN_BUTTON = Target.the("Log in").locatedBy("//button[@type='submit']");
+    public static Target ERROR_MESSAGE = Target.the("Invalid Credentials").locatedBy("//div[@class='orangehrm-login-error']/div/div/p");
 # Setting jenkins pipeline for Selenium(Cucumber serenity project)
 * This project is example how can setup jenkins pipeline for selenium project step by step
 ## Setup
