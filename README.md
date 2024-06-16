@@ -34,6 +34,8 @@
 
 ## View HTML Report
 * HTML report will be generated and report link displayed on terminal once execution with `mvn clean verify`
+* or
+* .../dolpheen-serenity-cucumber/target/site/serenity/index.html
 
 
 # Writing tests:
