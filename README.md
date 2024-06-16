@@ -58,7 +58,7 @@
 # Sample Definitions:
     @Given("{actor} is on the home page")
     public void user_is_on_the_login_page(Actor actor) {
-    actor.wasAbleTo(NavigateTo.orangeHrmHomePage());
+        actor.wasAbleTo(NavigateTo.orangeHrmHomePage());
     }
 
     @When("{actor} enters email {string}")
