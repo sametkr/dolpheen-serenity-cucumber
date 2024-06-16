@@ -91,6 +91,19 @@
     public static Target USER_PASSWORD = Target.the("Password").locatedBy("//input[@name='password']");
     public static Target LOG_IN_BUTTON = Target.the("Log in").locatedBy("//button[@type='submit']");
     public static Target ERROR_MESSAGE = Target.the("Invalid Credentials").locatedBy("//div[@class='orangehrm-login-error']/div/div/p");
+# Screenshots Configuration:
+    serenity {
+      take.screenshots = FOR_FAILURES
+    }
+
+    or
+
+    - FOR_EACH_ACTION: Saves a screenshot at every web element action (like click(), typeAndEnter(), type(), typeAndTab() etc.).
+    - BEFORE_AND_AFTER_EACH_STEP: Saves a screenshot before and after every step.
+    - AFTER_EACH_STEP: Saves a screenshot after every step
+    - FOR_FAILURES: Saves screenshots only for failing steps.
+    - DISABLED: Doesn't save screenshots for any steps.
+
 # Setting jenkins pipeline for Selenium(Cucumber serenity project)
 * This project is example how can setup jenkins pipeline for selenium project step by step
 ## Setup
