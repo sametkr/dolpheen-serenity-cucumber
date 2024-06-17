@@ -5,7 +5,6 @@ public class Spartan {
     private String gender;
     private long phone;
 
-    // Constructors
     public Spartan() {}
 
     public Spartan(String name, String gender, long phone) {
@@ -14,7 +13,7 @@ public class Spartan {
         this.phone = phone;
     }
 
-    // Getters and Setters
+
     public String getName() {
         return name;
     }
