@@ -1,4 +1,4 @@
-package dolpheen.stepdefinitions;
+package ui_tests.stepdefinitions;
 
 import io.cucumber.java.Before;
 import io.cucumber.java.ParameterType;

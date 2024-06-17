@@ -1,4 +1,4 @@
-package dolpheen.stepdefinitions;
+package ui_tests.stepdefinitions;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -7,9 +7,9 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.ensure.Ensure;
-import dolpheen.navigation.NavigateTo;
-import dolpheen.pages.*;
-import dolpheen.pages.OrangeHrmHomePage;
+import ui_tests.navigation.NavigateTo;
+import ui_tests.pages.*;
+import ui_tests.pages.OrangeHrmHomePage;
 
 public class LoginStepDefinitions {
 

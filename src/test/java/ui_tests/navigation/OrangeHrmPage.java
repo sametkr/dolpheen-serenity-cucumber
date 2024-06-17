@@ -1,4 +1,4 @@
-package dolpheen.navigation;
+package ui_tests.navigation;
 
 import net.serenitybdd.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;

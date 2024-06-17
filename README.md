@@ -17,7 +17,7 @@
 
 * **Clone the repository**:
    ```sh
-   git clone https://github.com/sametkr/dolpheen-serenity-cucumber.git
+   git clone https://github.com/sametkr/ui_tests-serenity-cucumber.git
 * **Install dependencies**:
     ```sh
   mvn clean install
@@ -35,14 +35,15 @@
 ## View HTML Report
 * HTML report will be generated and report link displayed on terminal once execution with `mvn clean verify`
 * or
-* .../dolpheen-serenity-cucumber/target/site/serenity/index.html
+* .../ui_tests-serenity-cucumber/target/site/serenity/index.html
 
 
 # Writing tests:
     
-    1. Create Gherkin feature files in src/test/resources//features.
-    2. Define step implementations in src/test/java/dolpheen/stepdefinitions.
-    3. Create Page Object classes in src/test/java/dolpheen/pages.
+    1. Create Gherkin feature files in src/test/resources/features
+    2. Define ui tests step implementations in src/test/java/ui_tests/stepdefinitions
+    3. Create Page Object classes in src/test/java/ui_tests/pages
+    4. Define api tests step implementations in src/test/java/api_spartan/stepdefinitions
 
 
 # Sample Feature:

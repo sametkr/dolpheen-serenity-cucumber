@@ -1,4 +1,4 @@
-package dolpheen.pages;
+package ui_tests.pages;
 
 import net.serenitybdd.screenplay.targets.Target;
 

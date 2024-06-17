@@ -1,4 +1,4 @@
-package dolpheen.navigation;
+package ui_tests.navigation;
 
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;

@@ -1,4 +1,4 @@
-package api_spartan.definitions;
+package api_spartan.stepdefinitions;
 
 import api_spartan.POJO.Spartan;
 import io.restassured.RestAssured;
