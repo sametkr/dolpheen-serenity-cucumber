@@ -17,7 +17,7 @@
 
 * **Clone the repository**:
    ```sh
-   git clone https://github.com/sametkr/ui_tests-serenity-cucumber.git
+   git clone https://github.com/sametkr/dolpheen-serenity-cucumber.git
 * **Install dependencies**:
     ```sh
   mvn clean install
