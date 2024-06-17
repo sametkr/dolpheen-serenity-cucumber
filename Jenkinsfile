@@ -1,46 +1,29 @@
 pipeline {
     agent any
-
+    tools {
+        jdk 'java-17'
+        maven 'Maven'
+    }
     stages {
-        stage ('Compile Stage') {
-
+        stage('Build') {
             steps {
-                withMaven(maven : 'maven_3.8.1') {
-                    bat 'mvn clean'
-                }
+                sh 'mvn clean install'
             }
         }
-
-        stage ('Testing Stage:Firefox') {
-
+        stage('Test') {
             steps {
-                withMaven(maven : 'maven_3.8.1') {
-                    bat 'mvn verify -Dcontext=firefox -Dwebdriver.driver=firefox'
-                }
+                sh 'mvn verify'
             }
         }
-
-         stage ('Testing Stage: Chrome') {
-
+        stage('Publish Report') {
             steps {
-                withMaven(maven : 'maven_3.8.1') {
-                    bat 'mvn verify -Dcontext=chrome -Dwebdriver.driver=chrome'
-                }
-            }
-        }
-
-
-        stage ('Deployment Stage') {
-            steps {
-                withMaven(maven : 'maven_3.8.1') {
-                    echo 'Deployment...'
-                }
-            }
-        }
-
-        stage ('Publish Reports') {
-            steps {
-               publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: '\\target\\site\\serenity', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
+                publishHTML(target: [
+                    reportName: 'Serenity Report',
+                    reportDir: 'target/site/serenity',
+                    reportFiles: 'index.html',
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true
+                ])
             }
         }
     }
