@@ -56,6 +56,11 @@
     And user enters password "admin123"
     And user clicks Log in button
     Then user should see "Dashboard" on the homepage
+# Sample Web Elements:
+    public static Target USER_USERNAME = Target.the("Username").locatedBy("//input[@name='username']");
+    public static Target USER_PASSWORD = Target.the("Password").locatedBy("//input[@name='password']");
+    public static Target LOG_IN_BUTTON = Target.the("Log in").locatedBy("//button[@type='submit']");
+    public static Target ERROR_MESSAGE = Target.the("Invalid Credentials").locatedBy("//div[@class='orangehrm-login-error']/div/div/p");
 
 # Sample Definitions:
     @Given("{actor} is on the home page")
@@ -88,17 +93,58 @@
         actor.attemptsTo(Ensure.that(OrangeHrmHomePage.ERROR_MESSAGE).hasText(string));
     }
 
-# Sample Web Elements:
-    public static Target USER_USERNAME = Target.the("Username").locatedBy("//input[@name='username']");
-    public static Target USER_PASSWORD = Target.the("Password").locatedBy("//input[@name='password']");
-    public static Target LOG_IN_BUTTON = Target.the("Log in").locatedBy("//button[@type='submit']");
-    public static Target ERROR_MESSAGE = Target.the("Invalid Credentials").locatedBy("//div[@class='orangehrm-login-error']/div/div/p");
+# Sample POJO:
+    public Spartan() {}
+
+        public Spartan(String name, String gender, long phone) {
+            this.name = name;
+            this.gender = gender;
+            this.phone = phone;
+        }
+    
+        public String getName() {
+            return name;
+        }
+    
+        public void setName(String name) {
+            this.name = name;
+        }
+    
+        public String getGender() {
+            return gender;
+        }
+    
+        public void setGender(String gender) {
+            this.gender = gender;
+        }
+    
+        public long getPhone() {
+            return phone;
+        }
+    
+        public void setPhone(long phone) {
+            this.phone = phone;
+        }
+    }
+
+# Sample API Definitions:
+    @Given("a new Spartan is created with name {string}, gender {string}, phone {string} details")
+        public void a_new_spartan_is_created_with_name_gender_phone_details(String name, String gender, String phone) {
+        Spartan spartan = new Spartan(name, gender, phone2);
+        Response response = SerenityRest.given().contentType("application/json").body(spartan)
+                  .when().post(baseURI + "/api/spartans")
+                  .then().log().body().extract().response();
+
+        spartanId = response.getBody().path("data.id");
+    }
+
+
 # Screenshots Configuration:
     serenity {
       take.screenshots = FOR_FAILURES
     }
 
-    or
+    or other screenshot settings,
 
     - FOR_EACH_ACTION: Saves a screenshot at every web element action (like click(), typeAndEnter(), type(), typeAndTab() etc.).
     - BEFORE_AND_AFTER_EACH_STEP: Saves a screenshot before and after every step.
