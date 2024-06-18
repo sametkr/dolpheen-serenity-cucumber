@@ -20,8 +20,7 @@ public class SpartanAPITest {
 
         Spartan spartan = new Spartan("John Smith", "Male", 1234567890);
         Response response = SerenityRest.given().contentType("application/json").body(spartan)
-                .when().post("/api/spartans")
-                .then().log().body().extract().response();
+                .when().post("/api/spartans");
 
         int spartanId = response.getBody().path("data.id");
 

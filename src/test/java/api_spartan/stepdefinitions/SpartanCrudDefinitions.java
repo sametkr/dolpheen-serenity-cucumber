@@ -7,26 +7,23 @@ import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import net.serenitybdd.rest.SerenityRest;
 
-
 import static org.hamcrest.Matchers.equalTo;
 
 public class SpartanCrudDefinitions {
 
     private Response response;
-    private int spartanId;
     private Spartan spartan;
-    private int phone2;
-    private String baseURI = "http://54.243.27.10:8000";
+    private final String baseURI = "http://54.243.27.10:8000";
+    private int spartanId;
 
 
 
     @Given("a new Spartan is created with name {string}, gender {string}, phone {string} details")
     public void a_new_spartan_is_created_with_name_gender_phone_details(String name, String gender, String phone) {
-        phone2 = (int) Long.parseLong(phone);
+        long phone2 = Long.parseLong(phone);
         spartan = new Spartan(name, gender, phone2);
-        Response response = SerenityRest.given().contentType("application/json").body(spartan)
-                .when().post(baseURI + "/api/spartans")
-                .then().log().body().extract().response();
+        response = SerenityRest.given().contentType("application/json").body(spartan)
+                .when().post(baseURI + "/api/spartans");
 
         spartanId = response.getBody().path("data.id");
     }
